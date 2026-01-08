@@ -3,40 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C&G Barbearia</title>
+    <title>C&C Barbearia - Estilo e Tradição</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Configuração de cores personalizadas direto no script
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                barberRed: '#b91c1c', // Vermelho da máquina da logo
-                barberBlack: '#111111',
-              }
-            }
-          }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c9a96e;
+            --primary-dark: #a8843d;
+            --dark: #1a1a1a;
+            --light: #f8f5f0;
         }
-    </script>
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .logo-text {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .section-title.center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .bg-dark {
+            background-color: var(--dark);
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .border-primary {
+            border-color: var(--primary);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary);
+        }
+        
+        .hover-bg-primary:hover {
+            background-color: var(--primary);
+        }
+        
+        .hover-text-primary:hover {
+            color: var(--primary);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .vertical-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Largura máxima para controle */
+    height: 600px; /* Altura fixa para vertical */
+    margin: 0 auto; /* Centraliza */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+    /* Para responsividade em telas menores: */
+    @media (max-width: 768px) {
+    .vertical-video-container {
+        height: 500px;
+        max-width: 300px;
+    }
+    }
+
+
+    .vertical-video-container-alt {
+        aspect-ratio: 9/16; /* Proporção vertical (9:16) */
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .cut-image {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .cut-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border-top: 3px solid transparent;
+        }
+        
+        .service-card:hover {
+            border-top-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-button {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+    </style>
 </head>
-<body class="bg-zinc-50 text-barberBlack">
-
-    <nav class="p-6 flex justify-between items-center bg-white shadow-sm">
-        <h1 class="text-2xl font-bold">C&G <span class="text-barberRed">BARBEARIA</span></h1>
-        <ul class="flex gap-6 font-medium">
-            <li><a href="#" class="hover:text-barberRed">Início</a></li>
-            <li><a href="#" class="hover:text-barberRed">Serviços</a></li>
-            <li><a href="#" class="bg-barberBlack text-white px-4 py-2 rounded">Agendar</a></li>
-        </ul>
-    </nav>
-
-    <header class="py-20 px-6 text-center bg-zinc-900 text-white">
-        <h2 class="text-5xl font-extrabold mb-4">O ESTILO QUE VOCÊ MERECE.</h2>
-        <p class="text-zinc-400 mb-8">Corte clássico, barba impecável e o melhor atendimento da região.</p>
-        <button class="bg-barberRed hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition">
-            VER PREÇOS
-        </button>
+<body>
+    <!-- Header & Navigation -->
+    <header class="bg-dark sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="image/logo.jpeg" alt="Logo C&C Barbearia" class="w-12 h-12 rounded-full mr-3">
+                <div>
+                    <h1 class="logo-text text-2xl text-white">C&C Barbearia</h1>
+                    <p class="text-xs text-gray-300">Desde 2025</p>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="md:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-white hover:text-primary transition duration-300 font-medium">Início</a></li>
+                <li><a href="#about" class="text-white hover:text-primary transition duration-300 font-medium">Sobre</a></li>
+                <li><a href="#gallery" class="text-white hover:text-primary transition duration-300 font-medium">Galeria</a></li>
+                <li><a href="#services" class="text-white hover:text-primary transition duration-300 font-medium">Serviços</a></li>
+                <li><a href="#location" class="text-white hover:text-primary transition duration-300 font-medium">Localização</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-gray-900 px-4 py-6">
+            <ul class="space-y-4">
+                <li><a href="#home" class="block text-white hover:text-primary transition duration-300 font-medium">Início</a></li>
+                <li><a href="#about" class="block text-white hover:text-primary transition duration-300 font-medium">Sobre</a></li>
+                <li><a href="#gallery" class="block text-white hover:text-primary transition duration-300 font-medium">Galeria</a></li>
+                <li><a href="#services" class="block text-white hover:text-primary transition duration-300 font-medium">Serviços</a></li>
+                <li><a href="#location" class="block text-white hover:text-primary transition duration-300 font-medium">Localização</a></li>
+            </ul>
+        </div>
     </header>
 
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <div class="inline-block px-4 py-1 bg-primary rounded-full mb-4">
+                    <span class="text-sm font-medium">Desde 2025</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Mais do que uma barbearia, uma <span class="text-primary">experiência</span>.</h2>
+                <p class="text-lg mb-8 text-gray-300">
+                    Na C&C Barbearia, combinamos técnicas tradicionais com estilo contemporâneo para oferecer o melhor cuidado masculino. Nossa missão é proporcionar não apenas um corte de cabelo ou barba, mas uma experiência única de bem-estar e confiança.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://wa.me/557184003252?text=Olá! Gostaria de agendar um horário" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 flex items-center floating-button">
+                        <i class="fab fa-whatsapp text-xl mr-2"></i> Agendar Agora
+                    </a>
+                    <a href="#services" class="border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                        Ver Serviços
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="relative">
+                    <img src="image/foto-capa.jpeg" alt="Corte de cabelo estiloso" class="w-auto h-400px rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-title">Nossa História & Filosofia</h2>
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <p class="text-lg mb-6">
+                        Acreditamos que um bom corte vai além da estética - é sobre autoestima, confiança e expressão pessoal. Por isso, cada serviço é realizado com atenção individualizada, usando produtos de alta qualidade e técnicas atualizadas.
+                    </p><br>
+                    <div class="bg-gray-100 p-6 rounded-lg border-l-4 border-primary">
+                        <p class="italic text-lg">"Na C&C, você não é apenas mais um cliente. Você é parte da nossa história, e cada corte é uma assinatura única do nosso trabalho."</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <div class="cut-image mt-8">
+                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Barba feita" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div class="cut-image">
+                            <img src="image/filosofia.jpeg" alt="Corte de cabelo estiloso" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center section-title center">Nossos Serviços</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
+                Oferecemos uma gama completa de serviços para cuidar do seu visual. Todos os serviços incluem uma experiência premium com produtos de alta qualidade.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cut text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Corte de Cabelo</h3>
+                    <p class="text-gray-600 mb-6">Corte moderno e personalizado de acordo com seu estilo facial e preferências, com finalização completa.</p>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-air-freshener text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Barba</h3>
+                    <p class="text-gray-600 mb-6">Aparar, modelar e hidratar sua barba com produtos especializados para um visual impecável.</p>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Corte a Domicílio</h3>
+                    <p class="text-gray-600 mb-6">Comodidade no seu lar! Levamos todo o cuidado e profissionalismo da barbearia até você.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery & Video Section -->
+    <section id="gallery" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center section-title center">Nossos Trabalhos em Ação</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
+                Confira alguns dos nossos cortes e veja como transformamos visual com precisão e estilo.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-center md:text-left">Vídeo Demonstração</h3>
+                <div class="vertical-video-container">
+                    <video controls poster="/image/video-thumbnail.jpg" style="width:100%; height:100%; object-fit:cover;">
+                    <source src="/image/video-demonstracao.mp4" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-center md:text-left">Transformações Recentes</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="cut-image">
+                            <img src="image/01-galeria.jpeg">
+                        </div>
+                        <div class="cut-image">
+                            <img src="image/02-galeria.jpeg">
+                        </div>
+                        <div class="cut-image">
+                            <img src="image/03-galeria.jpeg">
+                        </div>
+                        <div class="cut-image">
+                            <img src="image/04-galeria.jpeg">
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600 text-center md:text-left">Cada transformação é única e feita sob medida para cada cliente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center section-title center">Nossa Localização</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
+                Venha nos visitar ou aproveite a comodidade do nosso serviço a domicílio. Estamos prontos para atendê-lo!
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <div class="map-container h-96">
+                        <!-- Mapa do Google Maps -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0754267452906!2d-46.65342658440632!3d-23.565734367638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1683062808316!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold mb-2 flex items-center">
+                                <i class="fas fa-map-marker-alt text-primary mr-3"></i> Endereço
+                            </h4>
+                            <p class="text-gray-600">Av. Paulista, 1234 - Bela Vista, São Paulo - SP</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold mb-2 flex items-center">
+                                <i class="fas fa-clock text-primary mr-3"></i> Horário de Funcionamento
+                            </h4>
+                            <p class="text-gray-600">Segunda a Sexta: 9h às 20h</p>
+                            <p class="text-gray-600">Sábado: 9h às 18h</p>
+                            <p class="text-gray-600">Domingo: 10h às 15h</p>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-lg font-bold mb-2 flex items-center">
+                                <i class="fas fa-car text-primary mr-3"></i> Serviço a Domicílio
+                            </h4>
+                            <p class="text-gray-600">Oferecemos corte a domicílio para toda a região central de São Paulo. Agende com antecedência!</p>
+                            <div class="mt-3 inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                                <i class="fas fa-check-circle mr-1"></i> Disponível de Segunda a Sábado
+                            </div>
+                        </div>
+                        
+                        <div class="bg-primary/10 p-6 rounded-lg">
+                            <h4 class="text-xl font-bold mb-3">Pronto para seu novo visual?</h4>
+                            <p class="mb-4">Agende seu horário agora mesmo pelo WhatsApp e garanta sua vaga!</p>
+                            <a href="https://wa.me/557184003252?text=Olá! Gostaria de agendar um horário" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                                <i class="fab fa-whatsapp text-xl mr-2"></i> Agendar pelo WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="image/logo.jpeg" alt="Logo C&C Barbearia" class="w-12 h-12 rounded-full mr-3">
+                        <div>
+                            <h2 class="logo-text text-2xl">C&C Barbearia</h2>
+                            <p class="text-gray-300">Estilo e tradição</p>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-gray-400 max-w-md">
+                        Transformando visual e elevando autoestima com cortes precisos e atendimento personalizado.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="https://wa.me/557184003252?text=Olá! Gostaria de agendar um horário" target="_blank" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <i class="fab fa-whatsapp text-xl mr-2"></i> Agendar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 C&C Barbearia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/557184003252?text=Olá! Gostaria de agendar um horário" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl z-50 transition duration-300 floating-button">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if(this.getAttribute('href') === '#') return;
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary');
+                link.classList.add('text-white');
+                
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-primary');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
