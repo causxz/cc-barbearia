@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C&G Barbearia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração de cores personalizadas direto no script
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                barberRed: '#b91c1c', // Vermelho da máquina da logo
+                barberBlack: '#111111',
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-zinc-50 text-barberBlack">
+
+    <nav class="p-6 flex justify-between items-center bg-white shadow-sm">
+        <h1 class="text-2xl font-bold">C&G <span class="text-barberRed">BARBEARIA</span></h1>
+        <ul class="flex gap-6 font-medium">
+            <li><a href="#" class="hover:text-barberRed">Início</a></li>
+            <li><a href="#" class="hover:text-barberRed">Serviços</a></li>
+            <li><a href="#" class="bg-barberBlack text-white px-4 py-2 rounded">Agendar</a></li>
+        </ul>
+    </nav>
+
+    <header class="py-20 px-6 text-center bg-zinc-900 text-white">
+        <h2 class="text-5xl font-extrabold mb-4">O ESTILO QUE VOCÊ MERECE.</h2>
+        <p class="text-zinc-400 mb-8">Corte clássico, barba impecável e o melhor atendimento da região.</p>
+        <button class="bg-barberRed hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition">
+            VER PREÇOS
+        </button>
+    </header>
+
+</body>
+</html>
